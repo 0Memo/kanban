@@ -88,6 +88,21 @@
           flex-grow: 1;
           max-height: 500px;  // Limit the height of the column (adjust as needed)
           overflow-y: auto;   // Enable vertical scrolling if tasks exceed the max height
+
+          /* Custom scrollbar styling */
+          ::-webkit-scrollbar {
+            width: 12px;  // Increase scrollbar width for better visibility on mobile
+          }
+
+          ::-webkit-scrollbar-thumb {
+            background: #BCAEA3;  // Set color of the scrollbar thumb
+            border-radius: 10px;  // Make the thumb rounded
+          }
+
+          ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);  // Track color
+            border-radius: 10px;
+          }
         }
       }
     }
@@ -140,4 +155,19 @@ footer {
 
 .custom-footer-text {
   color: #21F6BA;
+}
+
+/* Mobile responsiveness for scrollbar */
+@media (max-width: 768px) {
+  .tasks-container::-webkit-scrollbar {
+    width: 14px;  // Make scrollbar even wider on mobile devices
+  }
+  .tasks-container::-webkit-scrollbar-thumb {
+    background: #BCAEA3;
+    border-radius: 10px;
+  }
+  .tasks-container::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
 }
