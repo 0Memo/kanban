@@ -50,14 +50,13 @@
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        flex-basis: 0; // obligar a las columnas a tener el mismo tamaño, sin importar el contenido
+        flex-basis: 0; // This ensures columns take equal space
 
         min-width: 300px;
         margin: 50px;
         padding: 25px;
 
         border-radius: 4px;
-
         background: rgba(#fff, 0.5);
         box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.25), 0 3px 14px 2px rgba(0, 0, 0, 0.25);
 
@@ -83,12 +82,19 @@
           border-bottom: 3px solid #BCAEA3;
           margin: 0 auto;
         }
+
+        /* Set a max height and enable scrolling if content overflows */
+        .tasks-container {
+          flex-grow: 1;
+          max-height: 500px;  // Limit the height of the column (adjust as needed)
+          overflow-y: auto;   // Enable vertical scrolling if tasks exceed the max height
+        }
       }
     }
   }
 }
 
-.tasls-container {
+.tasks-container {
   flex-grow: 1;
 }
 
