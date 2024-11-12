@@ -1,0 +1,22 @@
+// global styles and changing bulma variables
+
+// import Google fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Lato:400,800,900');
+@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Kalam:wght@300;400;700&display=swap');
+
+$family-sans-serif: 'Kalam', sans-serif;
+// update some of bulma's variables
+$control-border-width: 2px;
+$input-border-color: transparents;
+$input-shadow: none;
+
+/* GLOBAL STYLES */
+html, body {
+  height: 100%;
+}
+
+html {
+  background-image: url('./assets/background5.jpeg');
+  background-size: cover;
+  overflow-y: auto !important;
+}

@@ -1,0 +1,57 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * <div class="tags is-centered is-flex is-align-items-center" style="height: 100vh;"> * * * -->
+<!-- * * *   <div class="tag is-info is-medium has-text-grey-darker is-size-4 is-capitalized has-text-weight-semibold"> * * * -->
+<!-- * * *     ¡main-view funciona! * * * -->
+<!-- * * *   </div> * * * -->
+<!-- * * * </div> * * * -->
+
+<div class="root">
+  <div class="navbar has-background-dark">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <h1 class="app-name has-gradient-text ml-1 mt-1">Kanban</h1>
+        <figure class="image">
+          <img src="kanban.png" alt="kanban" />
+        </figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="board">
+    <div class="board-bar">
+      <p class="board-name ml-1 has-text-weight-semibold">Tablero de acciones</p>
+    </div>
+
+    <div class="board-wrapper">
+      <div class="board-columns" cdkDropListGroup>
+        <div class="board-column" *ngFor="let column of board.columns">
+          <div class="column-title">
+            {{ column.name }}
+          </div>
+          <div class="tasks-container"
+            cdkDropList
+            [cdkDropListData]="column.tasks"
+            (cdkDropListDropped)="drop($event)"
+          >
+            @for (item of column.tasks; track item) {
+              <div class="task" cdkDrag>{{item}}</div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="has-background-dark content has-text-centered is-size-5 p-3">
+      <p>
+        <span class="has-text-weight-medium has-text-white">
+          ©️ 2024 | Kanban by
+        </span>
+        <a class="custom-footer-text" href="https://portfolio-omega-seven-37.vercel.app">
+          Guillermo
+        </a>
+      </p>
+    </div>
+  </footer>
+</div>
