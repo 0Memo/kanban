@@ -11,28 +11,24 @@
 }
 
 .has-gradient-text {
-  background: -webkit-linear-gradient(#13f7f4, #2af598);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #16101b;
 }
 
 .is-custom-bg {
-  background-color: #21E7BA;
-  color: #23172B;
+  color: #16101b;
   font-family: 'Kalam', sans-serif;
 }
 
 .is-custom-font {
   color: #23172B;
   font-family: 'Kalam', sans-serif;
-  background-color: #2E333D;
-  border: 1px solid #21E7BA;
+  background-color: #373b44;
+  border: 2px solid #16101b;
   border-radius: 4px;
 }
 
 .is-custom-font:focus {
-  color: #f4eeee;
+  color: #eeebeb;
 }
 
 .button-wrapper {
@@ -45,12 +41,12 @@
   position: absolute;
   inset: -4px;
   transform: skewY(-3deg);
-  background-color: #21E7BA; /* Equivalent to Tailwind's blue-700 */
+  background-color: #eeebeb; /* Equivalent to Tailwind's blue-700 */
   z-index: -1;
 }
 
 .button {
-  background-color: #21E7BA; /* Ensure the button has the same blue color */
+  background-color: #eeebeb; /* Ensure the button has the same blue color */
   border: none;
   outline: none;
 }
@@ -109,7 +105,7 @@
           font-family: 'Kalam', sans-serif;
           text-transform: uppercase;
           margin-bottom: 20px;
-          color: #2E333D;
+          color: #16101b;
           text-align: center;
         }
 
@@ -155,11 +151,11 @@
 .task {
   display: flex;
   padding: 15px 20px;
-  background: #fff;
+  background: #eeebeb;
   border-radius: 4px;
   border-right: solid 1px #BCAEA3;
   font-weight: 700;
-  color: #23172B;
+  color: #16101b;
 
   margin-bottom: 15px;
 
@@ -193,10 +189,7 @@ footer {
 }
 
 .custom-footer-text {
-  background: -webkit-linear-gradient(#13f7f4, #2af598);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #16101b;
 }
 
 .font-box {
