@@ -216,6 +216,10 @@ footer {
 
 /* Mobile responsiveness for scrollbar */
 @media (max-width: 768px) {
+  navbar {
+    height: 150px;
+  }
+
   .add-task-section {
     margin-top: -25px;
   }
