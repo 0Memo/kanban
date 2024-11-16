@@ -6,6 +6,7 @@
 <!-- * * * </div> * * * -->
 
 <div class="root">
+  <!-- Navbar -->
   <div class="navbar has-background-dark">
     <div class="navbar-brand">
       <div class="navbar-item">
@@ -14,9 +15,30 @@
           <img src="kanban.png" alt="kanban" />
         </figure>
       </div>
+
+    </div>
+    <div class="add-task-section p-4 field has-addons has-addons-centered">
+      <input
+        [(ngModel)]="newTask"
+        class="input mr-5 is-custom-font"
+        placeholder="Agregar nueva tarea"
+        type="text"
+      />
+
+      <span class="button-wrapper relative block h-12">
+        <button class="button is-custom-bg has-text-weight-semibold relative flex gap-2 bg-blue-700"
+          (click)="addTask()">
+          <span class="relative text-white --m-2">Agregar tarea</span>
+        </button>
+      </span>
+
     </div>
   </div>
 
+  <!-- Add Task Input and Button -->
+
+
+  <!-- Kanban Board -->
   <div class="board">
     <div class="board-bar">
       <p class="board-name ml-1 has-text-weight-semibold">Tablero de acciones</p>
@@ -28,25 +50,35 @@
           <div class="column-title">
             {{ column.name }}
           </div>
-          <div class="tasks-container"
+          <div
+            class="tasks-container"
             cdkDropList
             [cdkDropListData]="column.tasks"
             (cdkDropListDropped)="drop($event)"
           >
-            @for (item of column.tasks; track item) {
-              <div class="task" cdkDrag>{{item}}</div>
-            }
+            <div
+              class="task"
+              *ngFor="let item of column.tasks; trackBy: trackByIndex"
+              cdkDrag
+            >
+              {{ item }}
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
+
   <footer>
     <div class="has-background-dark content has-text-centered is-size-5 p-3">
       <p>
         <span class="has-text-weight-medium has-text-white">
-          ©️ 2024 | Kanban by
+          <div class="font-box inline-block">
+            <span class="font-kalam has-text-weight-medium">C</span>
+          </div>
+          2024 | Kanban by
         </span>
         <a class="custom-footer-text" href="https://portfolio-omega-seven-37.vercel.app">
           Guillermo
@@ -54,4 +86,5 @@
       </p>
     </div>
   </footer>
+
 </div>

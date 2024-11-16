@@ -17,6 +17,45 @@
   -webkit-text-fill-color: transparent;
 }
 
+.is-custom-bg {
+  background-color: #21E7BA;
+  color: #23172B;
+  font-family: 'Kalam', sans-serif;
+}
+
+.is-custom-font {
+  color: #23172B;
+  font-family: 'Kalam', sans-serif;
+  background-color: #2E333D;
+  border: 1px solid #21E7BA;
+  border-radius: 4px;
+}
+
+.is-custom-font:focus {
+  color: #f4eeee;
+}
+
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.button-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  transform: skewY(-3deg);
+  background-color: #21E7BA; /* Equivalent to Tailwind's blue-700 */
+  z-index: -1;
+}
+
+.button {
+  background-color: #21E7BA; /* Ensure the button has the same blue color */
+  border: none;
+  outline: none;
+}
+
+
 .board {
   display: flex;
   flex-direction: column;
@@ -154,7 +193,32 @@ footer {
 }
 
 .custom-footer-text {
-  color: #21F6BA;
+  background: -webkit-linear-gradient(#13f7f4, #2af598);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.font-box {
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0 5px;
+  padding-top: 5px;
+  padding-right: 1px;
+}
+
+.font-kalam {
+  font-family: 'Kalam', cursive;
+  color: #fff;
+  font-size: 1.5rem !important;
+  line-height: 1;
 }
 
 /* Mobile responsiveness for scrollbar */
