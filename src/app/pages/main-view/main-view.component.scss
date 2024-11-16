@@ -216,6 +216,10 @@ footer {
 
 /* Mobile responsiveness for scrollbar */
 @media (max-width: 768px) {
+  .add-task-section {
+    margin-top: -25px;
+  }
+
   .tasks-container::-webkit-scrollbar {
     width: 14px;  // Make scrollbar even wider on mobile devices
   }
