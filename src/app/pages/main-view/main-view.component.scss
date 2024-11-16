@@ -41,16 +41,15 @@
   position: absolute;
   inset: -4px;
   transform: skewY(-3deg);
-  background-color: #eeebeb; /* Equivalent to Tailwind's blue-700 */
+  background-color: #eeebeb;
   z-index: -1;
 }
 
 .button {
-  background-color: #eeebeb; /* Ensure the button has the same blue color */
+  background-color: #eeebeb;
   border: none;
-  outline: none;
+  box-shadow: none !important;
 }
-
 
 .board {
   display: flex;
