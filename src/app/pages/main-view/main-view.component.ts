@@ -7,8 +7,9 @@ import {
   CdkDropList,
   CdkDropListGroup,
 } from '@angular/cdk/drag-drop';
-import { Board } from '../../models/board.model';
+import { Database, ref, onValue, set } from '@angular/fire/database';
 import { Column } from '../../models/column.model';
+import { Board } from '../../models/board.model';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -22,41 +23,51 @@ import { FormsModule } from '@angular/forms';
 export class MainViewComponent implements OnInit {
   newTask: string = '';
 
-  board: Board = new Board('TestBoard', [
-    new Column('Noción', [
-      'Aprender nuevos lenguajes',
-      'Apps nativas celulares',
-      'Hospedaje',
-      'Servidores',
-    ]),
-    new Column('Buscar', [
-      'Tutoriales',
-      'Documentación',
-      'Talleres',
-      'Cursos',
-      'Redes',
-    ]),
-    new Column('Hacer', [
-      'Seguir proyectos',
-      'Restablecer proyecto',
-      'Agregar i18n',
-      'Agregar modo oscuro',
-    ]),
-    new Column('Hecho', [
-      'Publicar proyecto',
-      'Aprender i18n',
-      'Actualizar portafolio',
-      'Actualizar HDV',
-      'Postulaciones',
-    ]),
-  ]);
+  // Kanban board initialized as an empty board
+  board: Board = new Board('FirebaseBoard', []);
 
-  ngOnInit() {
-    this.loadBoard();
+  constructor(private db: Database) {}
+
+  ngOnInit(): void {
+    this.loadBoardFromDatabase();
   }
 
-  // Method to handle drag and drop functionality
-  drop(event: CdkDragDrop<string[]>) {
+  /**
+   * Loads the Kanban board data from Firebase Realtime Database.
+   */
+  loadBoardFromDatabase(): void {
+    const boardRef = ref(this.db, 'kanbanBoard');
+    onValue(boardRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data && Array.isArray(data.columns)) {
+        this.board.columns = data.columns.map(
+          (col: any) => new Column(col.name, col.tasks || [])
+        );
+        console.log('Board loaded from Firebase:', this.board);
+      } else {
+        console.warn('No board data found in Firebase. Initializing empty board.');
+        this.board = new Board('FirebaseBoard', []);
+      }
+    });
+  }
+
+  /**
+   * Saves the Kanban board data to Firebase Realtime Database.
+   */
+  saveBoardToDatabase(): void {
+    const boardRef = ref(this.db, 'kanbanBoard');
+    set(boardRef, { columns: this.board.columns }).then(() => {
+      console.log('Board saved to Firebase:', this.board);
+    }).catch((error) => {
+      console.error('Error saving board to Firebase:', error);
+    });
+  }
+
+  /**
+   * Handles the drag-and-drop functionality for tasks between columns.
+   * @param event The drag-and-drop event
+   */
+  drop(event: CdkDragDrop<string[]>): void {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -71,32 +82,36 @@ export class MainViewComponent implements OnInit {
         event.currentIndex
       );
     }
-    this.saveBoard();
+    this.saveBoardToDatabase();
   }
 
-  // Method to add a new task to the first column
-  addTask() {
+  /**
+   * Adds a new task to the first column of the Kanban board.
+   */
+  addTask(): void {
     if (this.newTask.trim()) {
-      this.board.columns[0].tasks.push(this.newTask);
-      this.newTask = '';
-      this.saveBoard(); // Save changes to localStorage
+      // Find the "Noción" column
+      const notionColumn = this.board.columns.find((col) => col.name === 'Noción');
+
+      if (notionColumn) {
+        // Add the new task to the "Noción" column
+        notionColumn.tasks.push(this.newTask);
+        this.newTask = '';
+        this.saveBoardToDatabase(); // Save changes to Firebase
+        console.log('Task added to "Noción" column:', notionColumn.tasks);
+      } else {
+        console.error('The "Noción" column was not found.');
+      }
+    } else {
+      console.warn('Task cannot be empty.');
     }
   }
 
-  // Method to save the board to localStorage
-  saveBoard() {
-    localStorage.setItem('kanbanBoard', JSON.stringify(this.board));
-  }
-
-  // Method to load the board from localStorage
-  loadBoard() {
-    const savedBoard = localStorage.getItem('kanbanBoard');
-    if (savedBoard) {
-      this.board = JSON.parse(savedBoard);
-    }
-  }
-
-  // TrackBy function for ngFor to improve performance
+  /**
+   * TrackBy function for ngFor to improve rendering performance.
+   * @param index The index of the item
+   * @param item The item in the list
+   */
   trackByIndex(index: number, item: any): number {
     return index;
   }
