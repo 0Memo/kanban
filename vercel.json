@@ -2,8 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/kanban/browser/**/*",
-      "use": "@vercel/static"
+      "src": "angular.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/kanban/browser"
+      }
     }
   ],
   "routes": [
