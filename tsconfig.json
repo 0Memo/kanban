@@ -28,7 +28,8 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@assets/*": ["src/assets/*"]
-    }
+    },
+    "types": ["node"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
