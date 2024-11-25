@@ -13,14 +13,14 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes), provideAnimationsAsync(),
     provideFirebaseApp(() => initializeApp({
-      "projectId":environment.firebaseProjectId,
-      "appId":environment.firebaseAppId,
-      "databaseURL":environment.firebaseDatabaseURL,
-      "storageBucket":environment.firebaseStorageBucket,
+      "projectId": environment.firebaseProjectId,
+      "appId": environment.firebaseAppId,
+      "databaseURL": environment.firebaseDatabaseURL,
+      "storageBucket": environment.firebaseStorageBucket,
       "apiKey": environment.firebaseApiKey,
-      "authDomain":environment.firebaseAuthDomain,
-      "messagingSenderId":environment.firebaseMessagingSenderId,
-      "measurementId":environment.firebaseMeasurementId
+      "authDomain": environment.firebaseAuthDomain,
+      "messagingSenderId": environment.firebaseMessagingSenderId,
+      "measurementId": environment.firebaseMeasurementId
     })),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase())]
