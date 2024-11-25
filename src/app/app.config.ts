@@ -6,7 +6,6 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getDatabase, provideDatabase } from '@angular/fire/database';
 
-// Use environment variables directly
 const firebaseConfig = {
   projectId: process.env['firebaseProjectId'],
   appId: process.env['firebaseAppId'],
