@@ -60,8 +60,10 @@
               class="task"
               *ngFor="let item of column.tasks; trackBy: trackByIndex"
               cdkDrag
+              style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"
             >
               {{ item }}
+              <button (click)="deleteTask(column.name, item)" style="color: #16101b; font-size: 20px" >🗑</button>
             </div>
           </div>
         </div>

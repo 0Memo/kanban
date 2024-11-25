@@ -7,7 +7,7 @@ import {
   CdkDropList,
   CdkDropListGroup,
 } from '@angular/cdk/drag-drop';
-import { Database, ref, onValue, set } from '@angular/fire/database';
+import { Database, ref, onValue, set, remove } from '@angular/fire/database';
 import { Column } from '../../models/column.model';
 import { Board } from '../../models/board.model';
 import { NgFor } from '@angular/common';
@@ -104,6 +104,28 @@ export class MainViewComponent implements OnInit {
       }
     } else {
       console.warn('Task cannot be empty.');
+    }
+  }
+
+  /**
+ * Deletes a task from a specific column in Firebase Realtime Database.
+ * @param columnName The name of the column
+ * @param task The task to delete
+ */
+  deleteTask(columnName: string, task: string): void {
+    // Find the column by name
+    const column = this.board.columns.find((col) => col.name === columnName);
+
+    if (column) {
+      // Find the index of the task to delete
+      const taskIndex = column.tasks.indexOf(task);
+
+      // If the task is found, remove it
+      if (taskIndex > -1) {
+        column.tasks.splice(taskIndex, 1);  // Remove the task from the array
+        this.saveBoardToDatabase();          // Save the updated board to Firebase
+        console.log(`Task "${task}" deleted from column "${columnName}".`);
+      }
     }
   }
 
