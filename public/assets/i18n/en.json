@@ -1,7 +1,7 @@
 {
   "navbar": {
-    "placeholder": "Add new task",
-    "taskButton": "New task"
+    "placeholder": "New task",
+    "taskButton": "Add"
   },
   "board": {
     "actionBoard": "Action board"

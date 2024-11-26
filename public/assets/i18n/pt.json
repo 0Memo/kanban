@@ -1,7 +1,7 @@
 {
   "navbar": {
-    "placeholder": "Adicionar tarefa",
-    "taskButton": "Nova tarefa"
+    "placeholder": "Nova tarefa",
+    "taskButton": "Adicionar"
   },
   "board": {
     "actionBoard": "Quadro de ações"

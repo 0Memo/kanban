@@ -1,7 +1,7 @@
 {
   "navbar": {
-    "placeholder": "Agregar nueva tarea",
-    "taskButton": "Nueva tarea"
+    "placeholder": "Nueva tarea",
+    "taskButton": "Agregar"
   },
   "board": {
     "actionBoard": "Tablero de acciones"
