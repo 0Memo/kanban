@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "placeholder": "Ajout nouvelle tâche",
+    "taskButton": "Nouvelle tâche"
+  },
+  "board": {
+    "actionBoard": "Tableau d'actions"
+  },
+  "columns": {
+    "Noción": "Notion",
+    "Buscar": "Chercher",
+    "Hacer": "À faire",
+    "Hecho": "Fait"
+  },
+  "footer": {
+    "by": "par"
+  }
+}

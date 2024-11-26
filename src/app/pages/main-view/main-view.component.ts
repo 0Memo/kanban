@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   CdkDragDrop,
   moveItemInArray,
@@ -10,26 +10,70 @@ import {
 import { Database, ref, onValue, set, remove } from '@angular/fire/database';
 import { Column } from '../../models/column.model';
 import { Board } from '../../models/board.model';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { MultilangService } from '@app/multilang.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { CdkMenuModule, CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 @Component({
   selector: 'app-main-view',
   standalone: true,
-  imports: [CdkDropList, CdkDrag, CdkDropListGroup, NgFor, FormsModule],
+  imports: [CdkDropList, CdkDrag, CdkDropListGroup, NgFor, FormsModule, TranslateModule, CommonModule, CdkMenuModule],
   templateUrl: './main-view.component.html',
   styleUrls: ['./main-view.component.scss'],
 })
 export class MainViewComponent implements OnInit {
   newTask: string = '';
 
+  // Define the languages array with a specific type
+  languages: Array<'fr' | 'en' | 'es' | 'pt'> = ['fr', 'en', 'es', 'pt'];
+
   // Kanban board initialized as an empty board
   board: Board = new Board('FirebaseBoard', []);
+  columnTranslations: { [key: string]: string } = {};
 
   constructor(private db: Database) {}
 
   ngOnInit(): void {
     this.loadBoardFromDatabase();
+    this.loadColumnTranslations();
+  }
+
+  ngOnChanges(): void {
+    this.loadColumnTranslations();
+  }
+
+  multiLangService = inject(MultilangService);
+   // Type currentLanguage as one of the valid languages ('fr' | 'en' | 'es' | 'pt')
+  currentLanguage: 'fr' | 'en' | 'es' | 'pt' = this.multiLangService.languageSignal() as 'fr' | 'en' | 'es' | 'pt';
+
+  isDropdownOpen = false;
+
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  toggleLanguage(language: 'fr' | 'en' | 'es' | 'pt'): void {
+    if (this.currentLanguage !== language) {
+      this.multiLangService.updateLanguage(language);
+      this.currentLanguage = language;
+      this.loadColumnTranslations(); // Reload translations after language change
+    }
+  }
+
+  getLanguageName(language: string) : string {
+    switch(language) {
+      case "fr":
+        return "français";
+      case "en":
+        return "english";
+      case "es":
+        return "español";
+      case "pt":
+        return "português";
+      default:
+        return "français";
+    }
   }
 
   /**
@@ -49,6 +93,28 @@ export class MainViewComponent implements OnInit {
         this.board = new Board('FirebaseBoard', []);
       }
     });
+  }
+
+  /**
+   * Loads the column translations based on the current language and updates the column names.
+   */
+  loadColumnTranslations(): void {
+    this.multiLangService.translateService
+      .stream('columns')
+      .subscribe((translations) => {
+        this.columnTranslations = translations || {};
+        console.log('Column translations updated:', this.columnTranslations);
+      });
+  }
+
+  /**
+ * Gets the translated column name or falls back to the original name if not translated.
+ * @param columnName The original column name
+ */
+  getTranslatedColumnName(columnName: string): string {
+    // Use the translate service to get the column translation
+    const translationKey = `columns.${columnName}`;
+    return this.multiLangService.translateService.instant(translationKey) || columnName;
   }
 
   /**
@@ -91,14 +157,15 @@ export class MainViewComponent implements OnInit {
   addTask(): void {
     if (this.newTask.trim()) {
       // Find the "Noción" column
-      const notionColumn = this.board.columns.find((col) => col.name === 'Noción');
+      // const notionColumn = this.board.columns.find((col) => col.name === 'Noción');
+      const firstColumn = this.board.columns[0];
 
-      if (notionColumn) {
+      if (firstColumn) {
         // Add the new task to the "Noción" column
-        notionColumn.tasks.push(this.newTask);
+        firstColumn.tasks.push(this.newTask);
         this.newTask = '';
         this.saveBoardToDatabase(); // Save changes to Firebase
-        console.log('Task added to "Noción" column:', notionColumn.tasks);
+        console.log('Task added to "Noción" column:', firstColumn.tasks);
       } else {
         console.error('The "Noción" column was not found.');
       }

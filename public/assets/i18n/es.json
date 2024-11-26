@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "placeholder": "Agregar nueva tarea",
+    "taskButton": "Nueva tarea"
+  },
+  "board": {
+    "actionBoard": "Tablero de acciones"
+  },
+  "columns": {
+    "Noción": "Noción",
+    "Buscar": "Buscar",
+    "Hacer": "Hacer",
+    "Hecho": "Hecho"
+  },
+  "footer": {
+    "by": "por"
+  }
+}

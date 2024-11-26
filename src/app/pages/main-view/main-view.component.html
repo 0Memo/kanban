@@ -21,16 +21,41 @@
       <input
         [(ngModel)]="newTask"
         class="input mr-5 is-custom-font"
-        placeholder="Agregar nueva tarea"
+        placeholder="{{ 'navbar.placeholder' | translate }}"
         type="text"
       />
 
-      <span class="button-wrapper relative block h-12">
-        <button class="button is-custom-bg has-text-weight-semibold relative flex gap-2"
-          (click)="addTask()">
-          <span class="relative text-white --m-2">Agregar tarea</span>
+      <span class="button-wrapper relative block h-16">
+        <button class="button is-custom-bg has-text-weight-semibold relative flex gap-2 flex-shrink-0"
+          (click)="addTask()" style="width: 110px">
+          <span class="relative text-white --m-2">{{ 'navbar.taskButton' | translate }}</span>
         </button>
       </span>
+
+      <li class="nav-item mr-5">
+        <div class="dropdown">
+          <!-- Button that triggers the menu -->
+          <button [cdkMenuTriggerFor]="languageMenu" class="cdk-menu-trigger">
+            <span style="font-size: 30px; margin-left: 20px">🗺️</span>
+          </button>
+
+          <!-- Menu definition using ng-template -->
+          <ng-template #languageMenu>
+            <div cdkMenu class="cdk-menu has-background-dark p-3">
+              <ul>
+                <li *ngFor="let language of languages" class="p-3">
+                  <a class="cdk-menu-item is-language-font font-kalam" (click)="toggleLanguage(language)"
+                      [ngClass]="{ 'active': currentLanguage === language }">
+                    <span [ngClass]="getLanguageName(language)">
+                      {{ getLanguageName(language) }}
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </ng-template>
+        </div>
+      </li>
 
     </div>
   </div>
@@ -41,14 +66,14 @@
   <!-- Kanban Board -->
   <div class="board">
     <div class="board-bar">
-      <p class="board-name ml-1 has-text-weight-semibold">Tablero de acciones</p>
+      <p class="board-name ml-1 has-text-weight-semibold">{{ 'board.actionBoard' | translate }}</p>
     </div>
 
     <div class="board-wrapper">
       <div class="board-columns" cdkDropListGroup>
         <div class="board-column" *ngFor="let column of board.columns">
           <div class="column-title">
-            {{ column.name }}
+            {{ getTranslatedColumnName(column.name) }}
           </div>
           <div
             class="tasks-container"
@@ -83,7 +108,7 @@
           <div class="font-box inline-block">
             <span class="font-kalam has-text-weight-medium">C</span>
           </div>
-          2024 | Kanban by
+          2024 | Kanban {{ 'footer.by' | translate }}
         </span>
         <a class="custom-footer-text" href="https://portfolio-omega-seven-37.vercel.app">
           Guillermo
