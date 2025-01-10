@@ -16,11 +16,10 @@ import { MultilangService } from '@app/multilang.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CdkMenuModule, CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 @Component({
-  selector: 'app-main-view',
-  standalone: true,
-  imports: [CdkDropList, CdkDrag, CdkDropListGroup, NgFor, FormsModule, TranslateModule, CommonModule, CdkMenuModule],
-  templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.scss'],
+    selector: 'app-main-view',
+    imports: [CdkDropList, CdkDrag, CdkDropListGroup, NgFor, FormsModule, TranslateModule, CommonModule, CdkMenuModule],
+    templateUrl: './main-view.component.html',
+    styleUrls: ['./main-view.component.scss']
 })
 export class MainViewComponent implements OnInit {
   newTask: string = '';
