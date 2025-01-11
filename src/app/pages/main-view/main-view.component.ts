@@ -16,6 +16,7 @@ import { MultilangService } from '@app/multilang.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CdkMenuModule, CdkMenu, CdkMenuTrigger } from '@angular/cdk/menu';
 @Component({
+    standalone: true,
     selector: 'app-main-view',
     imports: [CdkDropList, CdkDrag, CdkDropListGroup, NgFor, FormsModule, TranslateModule, CommonModule, CdkMenuModule],
     templateUrl: './main-view.component.html',
