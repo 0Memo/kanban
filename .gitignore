@@ -48,3 +48,6 @@ Thumbs.db
 .firebase
 *-debug.log
 .runtimeconfig.json
+
+# Allow the production environment file to be committed
+!src/environments/environment.prod.ts
