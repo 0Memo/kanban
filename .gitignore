@@ -50,4 +50,6 @@ Thumbs.db
 .runtimeconfig.json
 
 # Allow the production environment file to be committed
+!src/environments/environment.development.ts
 !src/environments/environment.prod.ts
+!src/environments/environment.ts
