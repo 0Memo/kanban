@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "placeholder": "Նոր առաջադրանք",
+    "taskButton": "Ավելացր."
+  },
+  "board": {
+    "actionBoard": "Գործողությունների տախտակ"
+  },
+  "columns": {
+    "Noción": "Նկատառում",
+    "Buscar": "Որոնել",
+    "Hacer": "Կատարել",
+    "Hecho": "Ավարտված"
+  },
+  "footer": {
+    "by": "հեղինակ՝"
+  }
+}

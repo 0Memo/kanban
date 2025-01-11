@@ -26,7 +26,7 @@ export class MainViewComponent implements OnInit {
   newTask: string = '';
 
   // Define the languages array with a specific type
-  languages: Array<'fr' | 'en' | 'es' | 'pt'> = ['fr', 'en', 'es', 'pt'];
+  languages: Array<'fr' | 'en' | 'es' | 'pt' | 'am'> = ['fr', 'en', 'es', 'pt', 'am'];
 
   // Kanban board initialized as an empty board
   board: Board = new Board('FirebaseBoard', []);
@@ -45,7 +45,7 @@ export class MainViewComponent implements OnInit {
 
   multiLangService = inject(MultilangService);
    // Type currentLanguage as one of the valid languages ('fr' | 'en' | 'es' | 'pt')
-  currentLanguage: 'fr' | 'en' | 'es' | 'pt' = this.multiLangService.languageSignal() as 'fr' | 'en' | 'es' | 'pt';
+  currentLanguage: 'fr' | 'en' | 'es' | 'pt' | 'am' = this.multiLangService.languageSignal() as 'fr' | 'en' | 'es' | 'pt' | 'am';
 
   isDropdownOpen = false;
 
@@ -53,7 +53,7 @@ export class MainViewComponent implements OnInit {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
-  toggleLanguage(language: 'fr' | 'en' | 'es' | 'pt'): void {
+  toggleLanguage(language: 'fr' | 'en' | 'es' | 'pt' | 'am'): void {
     if (this.currentLanguage !== language) {
       this.multiLangService.updateLanguage(language);
       this.currentLanguage = language;
@@ -71,6 +71,8 @@ export class MainViewComponent implements OnInit {
         return "español";
       case "pt":
         return "português";
+      case "am":
+        return "հայերեն";
       default:
         return "français";
     }
