@@ -83,7 +83,7 @@ export class MainViewComponent implements OnInit {
    */
   loadBoardFromDatabase(): void {
     const boardRef = ref(this.db, 'kanbanBoard');
-    onValue(boardRef, (snapshot) => {
+    onValue(boardRef, (snapshot: any) => {
       const data = snapshot.val();
       if (data && Array.isArray(data.columns)) {
         this.board.columns = data.columns.map(
@@ -126,7 +126,7 @@ export class MainViewComponent implements OnInit {
     const boardRef = ref(this.db, 'kanbanBoard');
     set(boardRef, { columns: this.board.columns }).then(() => {
       console.log('Board saved to Firebase:', this.board);
-    }).catch((error) => {
+    }).catch((error: any) => {
       console.error('Error saving board to Firebase:', error);
     });
   }
