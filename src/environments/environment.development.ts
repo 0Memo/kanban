@@ -1,7 +1,7 @@
 export const environment = {
   firebaseApiKey: 'firebaseApiKey',
   firebaseAuthDomain: 'firebaseAuthDomain',
-  firebaseDatabaseURL: 'firebaseDatabaseURL',
+  firebaseDatabaseURL: "https://kanban-ca28d-default-rtdb.firebaseio.com",
   firebaseProjectId: 'firebaseProjectId',
   firebaseStorageBucket: 'firebaseStorageBucket',
   firebaseMessagingSenderId: 'firebaseMessagingSenderId',

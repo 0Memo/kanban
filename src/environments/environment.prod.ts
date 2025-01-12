@@ -3,7 +3,7 @@ export const firebaseConfig = {
   firebaseConfig: {
     apiKey: 'firebaseApiKey',
     authDomain: 'firebaseAuthDomain',
-    databaseURL: 'firebaseDatabaseURL',
+    databaseURL: "https://kanban-ca28d-default-rtdb.firebaseio.com",
     projectId: 'firebaseProjectId',
     storageBucket: 'firebaseStorageBucket',
     messagingSenderId: 'firebaseMessagingSenderId',
