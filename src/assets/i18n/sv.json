@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "placeholder": "Ny uppgift",
+    "taskButton": "Lägg till"
+  },
+  "board": {
+    "actionBoard": "Åtgärdsbräda"
+  },
+  "columns": {
+    "Noción": "Begrepp",
+    "Buscar": "Sök",
+    "Hacer": "Att göra",
+    "Hecho": "Färdig"
+  },
+  "footer": {
+    "by": "av"
+  }
+}

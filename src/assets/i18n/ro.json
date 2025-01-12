@@ -1,0 +1,18 @@
+{
+  "navbar": {
+    "placeholder": "Task nouă",
+    "taskButton": "Adaugă"
+  },
+  "board": {
+    "actionBoard": "Tablă de acțiune"
+  },
+  "columns": {
+    "Noción": "Noțiune",
+    "Buscar": "Căutare",
+    "Hacer": "De făcut",
+    "Hecho": "Terminat"
+  },
+  "footer": {
+    "by": "de"
+  }
+}
