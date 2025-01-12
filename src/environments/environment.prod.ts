@@ -1,13 +1,13 @@
 export const firebaseConfig = {
   production: true,
   firebaseConfig: {
-    apiKey: process.env['apiKey'] || '',
-    authDomain: process.env['authDomain'] || '',
-    databaseURL: process.env['databaseURL'] || '',
-    projectId: process.env['projectId'] || '',
-    storageBucket: process.env['storageBucket'] || '',
-    messagingSenderId: process.env['messagingSenderId'] || '',
-    appId: process.env['appId'] || '',
-    measurementId: process.env['measurementId'] || ''
+    apiKey: process.env['firebaseApiKey'] || '',
+    authDomain: process.env['firebaseAuthDomain'] || '',
+    databaseURL: process.env['firebaseDatabaseURL'] || '',
+    projectId: process.env['firebaseProjectId'] || '',
+    storageBucket: process.env['firebaseStorageBucket'] || '',
+    messagingSenderId: process.env['firebaseMessagingSenderId'] || '',
+    appId: process.env['firebaseAppId'] || '',
+    measurementId: process.env['firebaseMeasurementId'] || ''
   }
 };

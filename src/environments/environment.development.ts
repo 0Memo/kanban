@@ -1,10 +1,10 @@
 export const environment = {
-  firebaseApiKey: process.env['apiKey'] || '',
-  firebaseAuthDomain: process.env['authDomain'] || '',
-  firebaseDatabaseURL: process.env['databaseURL'] || '',
-  firebaseProjectId: process.env['projectId'] || '',
-  firebaseStorageBucket: process.env['storageBucket'] || '',
-  firebaseMessagingSenderId: process.env['messagingSenderId'] || '',
-  firebaseAppId: process.env['appId'] || '',
-  firebaseMeasurementId: process.env['measurementId'] || ''
+  firebaseApiKey: process.env['firebaseApiKey'] || '',
+  firebaseAuthDomain: process.env['firebaseAuthDomain'] || '',
+  firebaseDatabaseURL: process.env['firebaseDatabaseURL'] || '',
+  firebaseProjectId: process.env['firebaseProjectId'] || '',
+  firebaseStorageBucket: process.env['firebaseStorageBucket'] || '',
+  firebaseMessagingSenderId: process.env['firebaseMessagingSenderId'] || '',
+  firebaseAppId: process.env['firebaseAppId'] || '',
+  firebaseMeasurementId: process.env['firebaseMeasurementId'] || ''
 };
