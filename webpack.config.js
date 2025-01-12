@@ -6,8 +6,5 @@ module.exports = {
     new Dotenv({
       path: './.env',
     }),
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(process.env),
-    }),
   ],
 };
