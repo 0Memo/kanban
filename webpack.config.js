@@ -2,19 +2,9 @@ const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
-  // Optimize chunks for better size management
-  optimization: {
-    splitChunks: {
-      chunks: 'all', // Split all chunks, not just initial ones
-      maxSize: 200000, // Reduce chunk size to around 200KB per chunk (adjust as needed)
-      maxInitialRequests: 5, // Limit number of initial requests
-      minSize: 100000, // Minimum size of the chunk before splitting
-    },
-    minimize: true,
-  },
   plugins: [
     new Dotenv({
-      path: '.env',
+      path: './.env',
     }),
   ],
   module: {
