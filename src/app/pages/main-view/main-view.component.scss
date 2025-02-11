@@ -92,7 +92,7 @@ li {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-        flex-basis: 0; // This ensures columns take equal space
+        flex-basis: 0;
 
         min-width: 300px;
         margin: 50px;

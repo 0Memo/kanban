@@ -60,7 +60,6 @@
               "aot": true,
               "extractLicenses": true,
               "statsJson": true,
-              "es2015": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
